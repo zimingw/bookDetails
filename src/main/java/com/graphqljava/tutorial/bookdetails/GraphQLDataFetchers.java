@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import graphql.schema.DataFetcher;
 import org.dataloader.DataLoader;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -67,7 +66,8 @@ public class GraphQLDataFetchers {
     public DataFetcher getFieldsDataFetcher() {
         return dataFetchEnvironment -> ImmutableList.of(
                 ImmutableMap.of("id", "id-1", "value", "hello", "__typename", "TextField"),
-                ImmutableMap.of("id", "id-2", "securityLevelId", 1, "__typename", "SecurityField")
+                ImmutableMap.of("id", "id-2", "securityLevelId", 1, "__typename", "SecurityField"),
+                ImmutableMap.of("id", "id-3", "value", "description", "__typename", "TextField")
         );
     }
 
