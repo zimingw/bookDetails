@@ -1,0 +1,38 @@
+type Query {
+    bookById(id: ID): Book
+}
+
+type Book {
+    id: ID
+    name: String
+    pageCount: Int
+    author: Author
+    fields: [FieldUnion]
+}
+
+union FieldUnion = TextField | SecurityField
+
+interface TypedField {
+    type: String
+    isEditable: Boolean!
+}
+
+
+type TextField implements TypedField {
+    type: String
+    isEditable: Boolean!
+    value: String
+}
+
+type SecurityField implements TypedField {
+    type: String
+    id: ID
+    securityLevelId: Int
+    isEditable: Boolean!
+}
+
+type Author {
+    id: ID
+    firstName: String
+    lastName: String
+}
